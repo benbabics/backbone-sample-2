@@ -1,0 +1,53 @@
+{% set first_name = inlineReviewProfile.first_name %}
+
+
+
+<div class="ui-verification">
+
+  <div class="container">
+    <div class="recipient">
+      <div class="avatar">
+        <img src="{{ inlineReviewProfile.image_url }}">
+      </div>
+
+      <div class="instructions">
+        {% if isLoggedIn %}
+          <h1>{{ first_name }} is going to love your review!</h1>
+          <p>Your review will show potential customers that {{ first_name }} is great and help {{ first_name }}&#39;s business grow.</p>
+        {% else %}
+          <h1>{{ first_name }} needs real reviews from real people.</h1>
+          <p>Verify your review with Facebook to show your support for {{ first_name }}.</p>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="social-networks">
+      <ul class="ui-todos">
+        <li class="middle">
+          {% if isLoggedIn %}
+            <a class="large button continue" href="#" data-verify-label="logged in user">Continue</a>
+          {% else %}
+            <div class="large facebook-button button fb-login login" href="#" data-verify-label="facebook">Continue with Facebook</div>
+          {% endif %}
+        </li>
+      </ul>
+
+      {% if not isLoggedIn %}
+        <div class="explanation">
+          <a href="#">Why am I being asked to verify my identity?</a>
+          <p>Stik asks all reviewers to verify their identities via social media <strong>to avoid fake reviews</strong>.</p>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
+  <footer>
+    <div class="privacy-control ui-privacy">
+      <div class="privacy-option">
+        <div class="checkbox"></div>
+      </div>
+      <p class="privacy-instructions">I want {{ first_name }}&#39;s business to grow and agree to the <a href="/terms" target="_blank">terms of use</a>. {{ first_name }} may use my verified review on social media, in print, and in other contexts that will help {{ first_name }}&#39;s business.</p>
+    </div>
+  </footer>
+
+</div>

@@ -1,0 +1,50 @@
+<div class="ui-confirmation">
+
+  <div class="container">
+
+    {# alert #}
+    <div class="panel success ui-alert inline">
+        <ul class="ui-todos">
+          <li class="complete middle">
+            <h1 class="title">Great Job! Your review was submitted successfully!</h1>
+          </li>
+        </ul>
+    </div>
+
+    {# review #}
+    <div class="review">
+      <div class="photo facebook">
+        <img src="{{ author.image_url }}">
+      </div>
+
+      <div class="about">
+        <div class="author">
+          <span class="name">{{ author.first_name }} {{ author.last_name }}</span>
+        </div>
+
+        {% if rating %}
+          <div class="rating">
+            {% include '/general/_rating-stars.twig' with { 'rating': rating } only %}
+          </div>
+        {% endif %}
+      </div>
+
+      <p class="review-content">{{ content|nl2br|readmore(65, "See More")|raw }}"</p>
+    </div>
+
+  </div>
+
+  <footer>
+    <div class="grid-container">
+      <div class="grid-cell middle">
+        <p>Do you know anyone that could use {{ recipient.first_name }}&#39;s services?</p>
+      </div>
+
+      <div class="grid-cell middle">
+        <a href="#profile" data-would-refer="no">No</a>
+        <a href="/refer/{{ recipient.username }}/?rev_id={{ id }}" class="button" data-would-refer="yes">Yes</a>
+      </div>
+    </div>
+  </footer>
+
+</div>

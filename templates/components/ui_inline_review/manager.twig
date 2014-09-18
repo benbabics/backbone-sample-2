@@ -1,0 +1,18 @@
+{{ appendStylesheet('/css/components/ui-inline-review.css') }}
+
+
+{# notices #}
+<div id="notices"></div>
+
+{# sub-view placeholders #}
+<section id="inlineReviewManagerReview" class="card back ui-panel">
+  {% include '/components/ui_inline_review/_review.twig' %}
+</section>
+
+<section id="inlineReviewManagerVerification" class="card back ui-panel">
+  {% include '/components/ui_inline_review/_verification.twig' %}
+</section>
+
+<section id="inlineReviewManagerConfirmation" class="card back ui-panel">
+  {# this is inserted from JS UIInlineReview #}
+</section>

@@ -1,0 +1,49 @@
+{% set first_name = inlineReviewProfile.first_name %}
+
+
+
+<div class="ui-review">
+
+  <div class="container">
+    <div class="recipient">
+      <div class="avatar">
+        <img src="{{ inlineReviewProfile.image_url }}">
+      </div>
+
+      <div class="instructions">
+        <h1>{% if instructions %}{{instructions}}{% else %}Write a review about {{ first_name }}{% endif %}</h1>
+      </div>
+    </div>
+
+    <ol class="ui-todos">
+      <li>
+        <div id="rating-stars-container">
+          <p class="directive">How many stars would you give {{ first_name }}?</p>
+          {% include '/general/_rating-stars.twig' with { isHalfStar: false } %}
+          <div class="rating-stars-text">
+            <div class="rating-text">Terrible</div>
+            <div class="rating-text">Poor</div>
+            <div class="rating-text">Average</div>
+            <div class="rating-text">Very Good</div>
+            <div class="rating-text">Excellent</div>
+            <div class="rating-instructions">
+              <div class="instructions-large">Click to rate</div>
+              <div class="instructions-small">5 = Excellent</div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <p class="directive">What do you have to say about {{ first_name }}?</p>
+        <textarea cols="30" rows="4" placeholder="Write {{ first_name }} a review." data-testing="review text"></textarea>
+      </li>
+    </ol>
+  </div>
+
+  <footer>
+    <div class="ui-todos">
+      <button class="btn-submit button" type="button" data-testing="continue button">Continue</button>
+    </div>
+  </footer>
+
+</div>
